@@ -138,7 +138,13 @@ object PlayBuild extends Build {
             "org.specs2"                        %%   "specs2"                   %   "1.6.1"    %   "test",
             "com.novocode"                      %    "junit-interface"          %   "0.7"      %   "test",
             "org.seleniumhq.selenium"           %    "selenium-chrome-driver"   % "2.11.0"     %   "test",
-            "org.seleniumhq.selenium"           %    "selenium-htmlunit-driver" % "2.11.0"     %   "test"
+            "org.seleniumhq.selenium"           %    "selenium-htmlunit-driver" % "2.11.0"     %   "test",
+            // Dart dependencies
+            "com.google.dart"                   %    "compiler"                 % "r1556",
+            "com.google.dart"                   %    "corelib"                  % "r1556",
+            "com.google.dart"                   %    "htmllib"                  % "r1556",
+            "com.google.dart"                   %    "jsonlib"                  % "r1556",
+            "args4j"                            %    "args4j"                   % "2.0.12"
         )
 
         val templatesDependencies = Seq(

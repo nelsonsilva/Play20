@@ -230,6 +230,11 @@ object PlayProject extends Plugin {
     { name => name.replace(".coffee", ".js") },
     { (coffeeFile, minify) => (play.core.coffeescript.CoffeescriptCompiler.compile(coffeeFile), Seq(coffeeFile)) })
 
+  val DartCompiler = AssetsCompiler("dart",
+    { assets => (assets ** "*.dart") },
+    { name => name.replace(".dart", ".js") },
+    { (dartFile, minify) => play.core.dart.DartCompiler.compile(dartFile) })
+
   // ----- Post compile (need to be refactored and fully configurable)
 
   val PostCompile = (sourceDirectory in Compile, dependencyClasspath in Compile, compile in Compile, javaSource in Compile, sourceManaged in Compile, classDirectory in Compile) map { (src, deps, analysis, javaSrc, srcManaged, classes) =>
@@ -976,6 +981,8 @@ object PlayProject extends Plugin {
     resourceGenerators in Compile <+= CoffeescriptCompiler,
 
     resourceGenerators in Compile <+= JavascriptCompiler,
+
+    resourceGenerators in Compile <+= DartCompiler,
 
     minify := false,
 
